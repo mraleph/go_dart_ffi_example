@@ -20,5 +20,5 @@ func SendToPort(port int64, msg int64) {
 	obj._type = C.Dart_CObject_kInt64
 	// cgo does not support unions so we are forced to do this
 	*(*C.int64_t)(unsafe.Pointer(&obj.value[0])) = C.int64_t(msg)
-	C.GoDart_PostCObject(C.long(port), &obj)
+	C.GoDart_PostCObject(C.int64_t(port), &obj)
 }
