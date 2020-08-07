@@ -1,5 +1,8 @@
 Demo of calling Dart asynchronously from Go goroutine.
 
+### Minimum requirement:
+- Dart 2.9.0
+
 ```console
 $ go build -o godart.so -buildmode=c-shared
 $ dart godart.dart

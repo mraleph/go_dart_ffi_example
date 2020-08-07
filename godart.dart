@@ -5,6 +5,10 @@ typedef StartWorkType = Void Function(Int64 port);
 typedef StartWorkFunc = void Function(int port);
 
 void main() async {
+  ///
+  /// For macOS use absolute path to load the dynamic library
+  /// eg: final lib = DynamicLibrary.open("/absolute/path/go_dart_ffi_example/godart.so");
+  ///
   final lib = DynamicLibrary.open("./godart.so");
 
   final initializeApi = lib.lookupFunction<IntPtr Function(Pointer<Void>),
