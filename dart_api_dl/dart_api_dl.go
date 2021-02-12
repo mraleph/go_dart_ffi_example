@@ -11,8 +11,8 @@ package dart_api_dl
 import "C"
 import "unsafe"
 
-func Init(api unsafe.Pointer) C.long {
-	return C.Dart_InitializeApiDL(api)
+func Init(api unsafe.Pointer) bool {
+	return 0 == C.Dart_InitializeApiDL(api)
 }
 
 func SendToPort(port int64, msg int64) {

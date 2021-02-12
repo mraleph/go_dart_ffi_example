@@ -2,7 +2,7 @@ package main
 
 import (
 	"C"
-	"./dart_api_dl"
+	"github.com/mraleph/go_dart_ffi_example/dart_api_dl"
 	"fmt"
 	"time"
 	"unsafe"
@@ -10,7 +10,9 @@ import (
 
 //export InitializeDartApi
 func InitializeDartApi(api unsafe.Pointer) {
-	dart_api_dl.Init(api)
+	if !dart_api_dl.Init(api) {
+		panic("failed to initialize Dart DL C API: version mismatch")
+	}
 }
 
 //export StartWork
