@@ -11,8 +11,11 @@ package dart_api_dl
 import "C"
 import "unsafe"
 
-func Init(api unsafe.Pointer) bool {
-	return 0 == C.Dart_InitializeApiDL(api)
+func Init(api unsafe.Pointer) {
+	if C.Dart_InitializeApiDL(api) != 0 {
+		panic("failed to initialize Dart DL C API: version mismatch. " +
+			"must update include/ to match Dart SDK version")
+	}
 }
 
 func SendToPort(port int64, msg int64) {

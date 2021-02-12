@@ -2,17 +2,15 @@ package main
 
 import (
 	"C"
-	"github.com/mraleph/go_dart_ffi_example/dart_api_dl"
 	"fmt"
+	"github.com/mraleph/go_dart_ffi_example/dart_api_dl"
 	"time"
 	"unsafe"
 )
 
 //export InitializeDartApi
 func InitializeDartApi(api unsafe.Pointer) {
-	if !dart_api_dl.Init(api) {
-		panic("failed to initialize Dart DL C API: version mismatch")
-	}
+	dart_api_dl.Init(api)
 }
 
 //export StartWork
